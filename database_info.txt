@@ -1,0 +1,13 @@
+Используем PostgreSQL
+Заход за админа: psql -d postgres -U admin(Пароль - JDH)
+База данных - data ; зайти : \connection data
+
+Создание БД:
+flask shell
+from app import db #Вероятно app нужно будет поменять на что то другое
+db.create_all()
+
+Миграция БД:
+flask db init - не уверен что нужна
+flask db migrate -m "Комментарий"
+flask db upgrade
