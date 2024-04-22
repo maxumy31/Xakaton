@@ -1,0 +1,19 @@
+POST - создать
+GET - получить
+PUT - обновить
+DELETE - удалить
+
+/user
+POST /user - создать пользователя
+GET /user/username - принимает "username":"логин", возвращает юзера
+
+/university
+POST /university - создать новый вуз
+
+
+/form
+POST /form - создать новую запись
+
+
+/role
+POST /role - создать новую роль
