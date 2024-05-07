@@ -30,16 +30,33 @@ class User(db.Model):
 
 
 class University(db.Model):
-	id = db.Column(db.Integer, primary_key = True)
-	name = db.Column(db.Text, unique = True)
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.Text, unique = True)
+
+    def format(self):
+        return {
+            "id":self.id,
+            "name":self.name
+        }
 
 class Roles(db.Model):
     role = db.Column(db.Integer, primary_key = True)
     role_name = db.Column(db.Text,unique = True)
-    admin_panel = db.Column(db.Boolean,unique = False)
-    form_access = db.Column(db.Boolean,unique = False)
+
+    def format(self):
+        return {
+            "id":self.role,
+            "name":self.role_name,
+        }
 
 class Form(db.Model):
-    role = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key = True)
     info = db.Column(db.JSON)
     university_id = db.Column(db.Integer, unique = False)
+
+    def format(self):
+        return {
+            "id":id,
+            "data":info,
+            "university_id":university_id
+        }

@@ -2,6 +2,7 @@ from flask import Flask,render_template,jsonify,request
 from flask_migrate import Migrate
 from models import *
 from api.user import *
+from api.form import *
 
 '''
 
@@ -18,9 +19,7 @@ from api.user import *
 ░░███░░░░░█████░░░░██░░██░░░░
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-'''
 
-'''
 ¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶____________¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶
 ¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶________________¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶
 ¶¶¶¶¶¶¶¶¶¶¶¶¶_______________¶_____¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶
@@ -85,6 +84,11 @@ app.add_url_rule("/user/login",view_func=login,methods = ["POST"])
 app.add_url_rule("/user",view_func=create_user,methods = ["POST"])
 app.add_url_rule("/user",view_func=update_user,methods = ["PUT"])
 app.add_url_rule("/user",view_func=delete_user,methods = ["DELETE"])
+
+
+app.add_url_rule("/form",view_func=get_all_forms,methods = ["GET"])
+app.add_url_rule("/form/id",view_func=get_form_by_id,methods = ["GET"])
+
 
 #Главная страница
 @app.route('/', methods=['GET', 'POST'])
