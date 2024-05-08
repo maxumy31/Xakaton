@@ -1,30 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
+import Button from '@mui/material/Button';
+import UnivRating from './Table'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> <HateN></HateN> to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        
+        
       </header>
+      <body>
+          <Button variant="contained">Hello world</Button> 
+          <UnivRating />
+      </body>
     </div>
   );
-}
-
-function HateN()
-{
-  return <p>I hate nigers</p>
 }
 
 export default App;
