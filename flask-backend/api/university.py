@@ -4,7 +4,7 @@ from flask_sqlalchemy import session,query
 from models import *
 
 
-def add_role():
+def add_uni():
 	result = {}
 	name = request.form.get("role")
 
@@ -13,12 +13,12 @@ def add_role():
 		result['error'] = 'no username'
 		return jsonify(result)
 	
-	new_role = Roles()
-	new_role.name = name
+	new_uni = University()
+	new_uni.name = name
 
-	if new_role:
+	if new_uni:
 		try:
-			db.session.add(new_role)
+			db.session.add(new_uni)
 			db.session.commit()
 		#Проблемы с добавлением - пишем об этом
 		except exc.SQLAlchemyError as e:
@@ -29,14 +29,14 @@ def add_role():
 	return jsonify(result)
 
 
-def get_role():
+def get_uni():
 	result = {}
-	name = request.form.get("role")
+	name = request.form.get("university")
 	if not name is None:
-		roles = Roles.query.filter(Roles.name == name).all()
-	roles = Roles.query.all()
+		unis = University.query.filter(University.name == name).all()
+	unis = University.query.all()
 
-	for i in range(len(roles)):
-		result[i] = roles[i].format()
+	for i in range(len(unis)):
+		result[i] = unis[i].format()
 	return jsonify(result)
 
