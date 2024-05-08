@@ -19,7 +19,7 @@ function App() {
       <body>
           <Button variant="contained"
           onClick={() => {
-            fetchAsync ("https://localhost:5000/user") }}>Hello world</Button> 
+            fetchAsync ("http://127.0.0.1:5000") }}>Hello world</Button> 
           <UnivRating />
       </body>
     </div>
