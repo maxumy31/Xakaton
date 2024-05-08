@@ -7,7 +7,27 @@ import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import Toolbar from '@mui/material/Toolbar';
 import { TableContainer } from '@mui/material';
-import Paper from '@mui/material/Paper';
+import axios from 'axios'
+
+const aboba = require('./aboba.json');
+
+async function fetchAsync(url = "http://localhost:5000/") {
+
+            // Make a request for a user with a given ID
+            //axios.get('https://localhost:5000/user')
+
+            axios.get('http://localhost:5000/user/username', {
+              name:"admin"
+            })
+            .then((response) => {
+              console.log(response);
+              return response;
+            }, (error) => {
+              console.log(error);
+            });
+            }
+
+var nigger = fetchAsync("http://localhost:5000/user");
 
 class Row {
     constructor(id_, perf_, infrstr_, curm_, sci_ = null, intnat_ = null){
@@ -30,8 +50,12 @@ class Row {
 
 const rows = [
   new Row("R.E.Alexeev NNSTU", 7, 7, 7),
-  new Row("Lobach", 0, 0, 0, 0, 0)
+  new Row("Lobach", 0, 0, 0, 0, 0),
 ];
+
+nigger.data.map(function(value) {
+  rows.push(new Row(value.id, value.perf, value.infrstr, value.curm))
+});
 
 function preventDefault(event) {
   event.preventDefault();
@@ -39,7 +63,7 @@ function preventDefault(event) {
 
 export default function UnivRating() {
   return (
-    <TableContainer component={Paper}>
+    <TableContainer>
       <Toolbar>
             <Typography
               component="h1"
