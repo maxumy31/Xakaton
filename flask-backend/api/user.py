@@ -3,6 +3,10 @@ from sqlalchemy import exc
 from flask_sqlalchemy import session,query
 from models import *
 
+def corsify_actual_response(response):
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
+
 #ПОСТ запрос, вход
 def login():
 	result = {}
@@ -65,7 +69,7 @@ def get_user_by_username():
 		result['error'] = 'user not found'
 
 	
-	return jsonify(result)
+	return corsify_actual_response(jsonify(result))
 
 #ПОСТ запрос 
 def create_user():
