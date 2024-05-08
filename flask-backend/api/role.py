@@ -2,6 +2,7 @@ from flask import jsonify, request
 from sqlalchemy import exc
 from flask_sqlalchemy import session,query
 from models import *
+from api.cors import corsify_actual_response
 
 
 def add_role():
@@ -11,7 +12,7 @@ def add_role():
 	if name is None:
 		result['status'] = 'error occured'
 		result['error'] = 'no username'
-		return jsonify(result)
+		return corsify_actual_response(jsonify(result))
 	
 	new_role = Roles()
 	new_role.name = name
@@ -26,7 +27,7 @@ def add_role():
 			success = False
 
 
-	return jsonify(result)
+	return corsify_actual_response(jsonify(result))
 
 
 def get_role():
@@ -38,5 +39,5 @@ def get_role():
 
 	for i in range(len(roles)):
 		result[i] = roles[i].format()
-	return jsonify(result)
+	return corsify_actual_response(jsonify(result))
 

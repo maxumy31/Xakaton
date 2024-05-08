@@ -2,7 +2,7 @@ from flask import jsonify, request
 from sqlalchemy import exc
 from flask_sqlalchemy import session,query
 from models import *
-
+from api.cors import *
 
 
 def get_form_by_id():
@@ -17,7 +17,7 @@ def get_form_by_id():
 		result['data'] = form.format()
 		result['status'] = 'completed'
 
-	return result
+	return corsify_actual_response(jsonify(result))
 
 
 
@@ -33,7 +33,7 @@ def get_all_forms():
 		niger = niger + 1
 
 	result['status'] = 'completed'
-	return result
+	return corsify_actual_response(jsonify(result))
 
 	
 
