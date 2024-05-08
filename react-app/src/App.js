@@ -9,14 +9,14 @@ async function fetchAsync (url = "http://localhost:5000/") {
             // Make a request for a user with a given ID
             //axios.get('https://localhost:5000/user')
 
-            axios.get('http://localhost:5000/user/username', {
-              name:"admin"
-            })
+            axios.get('http://localhost:5000/user/username?login=admin', {})
             .then((response) => {
               console.log(response);
             }, (error) => {
               console.log(error);
             });
+            }
+            
             }
 
 function App() {

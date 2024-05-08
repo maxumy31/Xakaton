@@ -2,10 +2,8 @@ from flask import jsonify, request
 from sqlalchemy import exc
 from flask_sqlalchemy import session,query
 from models import *
+from api.cors import corsify_actual_response
 
-def corsify_actual_response(response):
-    response.headers.add("Access-Control-Allow-Origin", "*")
-    return response
 
 #ПОСТ запрос, вход
 def login():
@@ -33,7 +31,8 @@ def login():
 		result['status'] = 'error occured'
 		result['error'] = 'wrong password'
 
-	return jsonify(result)
+	return corsify_actual_response(jsonify(result))
+
 
 #ГЕТ запрос, НЕДОДЕЛАН
 def get_user():
@@ -51,13 +50,15 @@ def get_user():
 
 	for i in range(len(users)):
 		result[i] = users[i].format()
-	return jsonify(result)
+
+	return corsify_actual_response(jsonify(result))
+
 
 #ГЕТ запрос по username
 def get_user_by_username():
 	result = {}
 
-	name = request.args.get("username")
+	name = request.args.get("login")
 	print(name)
 
 	if not name is None:
@@ -114,7 +115,8 @@ def create_user():
 	else:
 		result['status'] = 'error occured'
 
-	return jsonify(result)
+	return corsify_actual_response(jsonify(result))
+
 
 
 def update_user():
