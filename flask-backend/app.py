@@ -3,6 +3,8 @@ from flask_migrate import Migrate
 from models import *
 from api.user import *
 from api.form import *
+from api.role import *
+from api.university import *
 
 '''
 
@@ -85,9 +87,17 @@ app.add_url_rule("/user",view_func=create_user,methods = ["POST"])
 app.add_url_rule("/user",view_func=update_user,methods = ["PUT"])
 app.add_url_rule("/user",view_func=delete_user,methods = ["DELETE"])
 
-
+#Подключение API для form
 app.add_url_rule("/form",view_func=get_all_forms,methods = ["GET"])
 app.add_url_rule("/form/id",view_func=get_form_by_id,methods = ["GET"])
+
+#Подключение API для role
+app.add_url_rule("/role",view_func=add_role,methods = ["POST"])
+app.add_url_rule("/role",view_func=get_role,methods = ["GET"])
+
+#Подключение API для university
+app.add_url_rule("/university",view_func=add_uni,methods = ["POST"])
+app.add_url_rule("/university",view_func=get_uni,methods = ["GET"])
 
 
 #Главная страница
