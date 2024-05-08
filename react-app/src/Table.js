@@ -16,7 +16,7 @@ async function fetchAsync(url = "http://localhost:5000/") {
             // Make a request for a user with a given ID
             //axios.get('https://localhost:5000/user')
 
-            axios.get('http://localhost:5000/user/username', {
+            axios.get(url, {
               name:"admin"
             })
             .then((response) => {
@@ -27,7 +27,7 @@ async function fetchAsync(url = "http://localhost:5000/") {
             });
             }
 
-var nigger = fetchAsync("http://localhost:5000/user");
+var nigger = fetchAsync("http://localhost:5000/form");
 
 class Row {
     constructor(id_, perf_, infrstr_, curm_, sci_ = null, intnat_ = null){
