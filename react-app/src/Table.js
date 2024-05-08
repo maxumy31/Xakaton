@@ -24,7 +24,8 @@ class Row {
 };
 
 const rows = [
-  new Row("R.E.Alexeev NNSTU", 7, 7, 7)
+  new Row("R.E.Alexeev NNSTU", 7, 7, 7),
+  new Row("Lobach", 0, 0, 0, 0, 0, 0)
 ];
 
 function preventDefault(event) {
@@ -42,27 +43,31 @@ export default function UnivRating() {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Dashboard
+              N
             </Typography>
           </Toolbar>
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Date</TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Ship To</TableCell>
-            <TableCell>Payment Method</TableCell>
-            <TableCell align="right">Sale Amount</TableCell>
+            <TableCell>Название</TableCell>
+            <TableCell>Успеваемость</TableCell>
+            <TableCell>Инфраструктура</TableCell>
+            <TableCell>Учебная программа</TableCell>
+            <TableCell>Трудоустройство</TableCell>
+            <TableCell>Наука</TableCell>
+            <TableCell align="right">Междунар. связи</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.id}>
-              <TableCell>{row.date}</TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.shipTo}</TableCell>
-              <TableCell>{row.paymentMethod}</TableCell>
-              <TableCell align="right">{`$${row.amount}`}</TableCell>
+              <TableCell>{row.id}</TableCell>
+              <TableCell>{row.perf}</TableCell>
+              <TableCell>{row.infrstr}</TableCell>
+              <TableCell>{row.curm}</TableCell>
+              <TableCell>{row.emplt}</TableCell>
+              <TableCell>{row.sci}</TableCell>
+              <TableCell align="right">{row.intnat}</TableCell>
             </TableRow>
           ))}
         </TableBody>
